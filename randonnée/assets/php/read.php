@@ -36,12 +36,19 @@ require 'login.php';
             <?php foreach ($hiking as $hike): ?>
                 <tr>
                 <td><?php echo htmlspecialchars($hike['id']); ?></td>
+                <td><a href="update.php?id=<?php echo htmlspecialchars($hike['id']); ?>"><?php echo htmlspecialchars($hike['name']); ?></a></td>
                 <td><?php echo htmlspecialchars($hike['name']); ?></td>
                 <td><?php echo htmlspecialchars($hike['difficulty']); ?></td>
                 <td><?php echo htmlspecialchars($hike['distance']); ?></td>
                 <td><?php echo htmlspecialchars($hike['duration']); ?></td>
                 <td><?php echo htmlspecialchars($hike['height_difference']); ?></td>
-                </tr>
+                <td>
+                        <a href="update.php?id=<?php echo htmlspecialchars($hike['id']); ?>">Modifier</a>
+                        <form action="delete.php" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="<?php echo htmlspecialchars($hike['id']); ?>">
+                            <button type="submit">Supprimer</button>
+                        </form>
+                    </td>
 
                 <?php endforeach; ?>
             <?php else: ?>
